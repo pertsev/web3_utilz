@@ -1,0 +1,17 @@
+{
+  "name": "off-chain_tx",
+  "version": "1.0.0",
+  "description": "Example of creating signed transaction without any network clients.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@p4lex",
+  "license": "ISC",
+  "dependencies": {
+    "@warren-bank/ethereumjs-tx-unsign": "^2.0.0",
+    "ethereumjs-tx": "^1.3.3",
+    "ethereumjs-util": "^5.1.2",
+    "web3": "^0.14.0"
+  }
+}

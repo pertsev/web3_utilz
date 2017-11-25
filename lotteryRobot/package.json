@@ -1,0 +1,15 @@
+{
+  "name": "robot",
+  "version": "1.0.0",
+  "description": "Dummy robot for smartcontract lottery.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@p4lex",
+  "license": "ISC",
+  "dependencies": {
+    "mathjs": "^3.17.0",
+    "web3": "^0.14.0"
+  }
+}
