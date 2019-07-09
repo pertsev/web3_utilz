@@ -16,4 +16,6 @@ node index.js 0x45df3ce73e04db535ebd4e5d96c9222699fe0a5ae1efdf46b502678af3aa879c
 ```
 
 ## Note
-It may not work if the smart contract state or state of the caller has been changed somehow. For reliable results, you need your own node synced up to the block of failed tx.
+1. It may not work if the smart contract state or state of the caller has been changed somehow. For reliable results, you need your own node synced up to the block of failed tx.
+2. It obviously does not work if the contract does not emit any reason (Old contracts).
+3. It does not work for `Out of gas`, `Bad Instruction` cases.
