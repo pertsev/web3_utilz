@@ -1,0 +1,22 @@
+{
+  "name": "revert-reason",
+  "version": "1.0.0",
+  "description": "Allows to get the revert reason for past transactions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pertsev/web3_utilz.git"
+  },
+  "author": "Alexey Pertsev <alexey@peppersec.com> (https://peppersec.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pertsev/web3_utilz/issues"
+  },
+  "homepage": "https://github.com/pertsev/web3_utilz#readme",
+  "dependencies": {
+    "web3": "^1.0.0-beta.52"
+  }
+}
