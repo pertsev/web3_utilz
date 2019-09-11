@@ -2,7 +2,7 @@
 const Web3 = require('web3')
 const kovanPOA = 'https://kovan.poa.network'
 const kovanInfura = 'https://kovan.infura.io/v3/c7463beadf2144e68646ff049917b716'
-const mainnetInfura = 'https://mainnet.infura.io/v3/c7463beadf2144e68646ff049917b716' // does not work
+const mainnetInfura = 'https://mainnet.infura.io/v3/c7463beadf2144e68646ff049917b716'
 const mainnetTrust = 'http://ethereum-rpc.trustwalletapp.com'
 const mainnetMEW = 'https://api.mycryptoapi.com/eth'
 
