@@ -3,14 +3,16 @@ const Web3 = require('web3')
 const kovanPOA = 'https://kovan.poa.network'
 const kovanInfura = 'https://kovan.infura.io/v3/c7463beadf2144e68646ff049917b716'
 const mainnetInfura = 'https://mainnet.infura.io/v3/c7463beadf2144e68646ff049917b716'
+const rinkebyInfura = 'https://rinkeby.infura.io/v3/c7463beadf2144e68646ff049917b716'
 const mainnetTrust = 'http://ethereum-rpc.trustwalletapp.com'
 const mainnetMEW = 'https://api.mycryptoapi.com/eth'
+const localhost = 'http://localhost:8545'
 
 const web3 = new Web3(mainnetTrust)
 
 async function main() {
 
-  if ( process.argv.length < 3) {
+  if (process.argv.length < 3) {
     console.error('Missing transaction hash argument which must be a 32 byte hex string with a 0x prefix which is 64 characters in total.')
     process.exit(1)
   }
@@ -22,6 +24,11 @@ async function main() {
   }
 
   const receipt = await web3.eth.getTransactionReceipt(txHash)
+
+  if (!receipt) {
+    console.error('Could not get transaction receipt. Are you sure it was mined?')
+    process.exit(3)
+  }
 
   if (receipt.status) {
     console.error('Transaction did not fail. Can only read the revert reason from failed transactions')
