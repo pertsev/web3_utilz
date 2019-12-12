@@ -1,9 +1,20 @@
 ## Solidity revert reason 
+
 The script allows to get the revert reason for past transactions.
 
+## Setup
+
+`npm i`
+
 ## Usage
-1. `npm i`
-2. `node index.js <TX_HASH>` 
+
+### Geth (default)
+
+`node index.js <TX_HASH>`
+
+### Parity
+
+`PARITY=1 node index.js <TX_HASH>`
 
 ## Example
 ```
@@ -16,6 +27,6 @@ node index.js 0x45df3ce73e04db535ebd4e5d96c9222699fe0a5ae1efdf46b502678af3aa879c
 ```
 
 ## Note
-1. It may not work if the smart contract state or state of the caller has been changed somehow. For reliable results, you need your own node synced up to the block of failed tx.
+1. It may not work if the smart contract state or state of the caller has been changed somehow. For reliable results, you need your own node synced up to the block of failed tx. For very old transactions, you may need to run an archive node.
 2. It obviously does not work if the contract does not emit any reason (Old contracts).
-3. It does not work for `Out of gas`, `Bad Instruction` cases.
+3. It does not work for `Bad Instruction` cases.

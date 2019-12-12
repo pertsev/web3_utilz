@@ -10,6 +10,39 @@ const localhost = 'http://localhost:8545'
 
 const web3 = new Web3(mainnetTrust)
 
+if (process.env.PARITY) {
+  web3.eth.extend({
+    property: 'parity',
+    methods: [
+      {
+        name: 'traceReplayTransaction',
+        call: 'trace_replayTransaction',
+        params: 2,
+      },
+    ],
+  })
+}
+
+async function getResult({ hash, to, input, from, value, gas, gasPrice, blockNumber }) {
+  // Parity call to get result
+  if (process.env.PARITY) {
+    return (await web3.eth.parity.traceReplayTransaction(hash, ['trace'])).output
+  }
+
+  // Geth call to get result
+  return web3.eth.call(
+    {
+      to,
+      data: input,
+      from,
+      value,
+      gas,
+      gasPrice,
+    },
+    blockNumber
+  )
+}
+
 async function main() {
 
   if (process.argv.length < 3) {
@@ -35,23 +68,16 @@ async function main() {
     process.exit(3)
   }
 
-  const { to, input, from, value, gas, gasPrice, blockNumber } = await web3.eth.getTransaction(txHash)
+  const transaction = await web3.eth.getTransaction(txHash)
 
-  if (receipt.gasUsed === gas) {
+  if (receipt.gasUsed === transaction.gas) {
     console.error('Transaction failed as it ran out of gas.')
     process.exit(4)
   }
 
   let rawMessageData
   try {
-    const result = await web3.eth.call({
-      to,
-      data: input,
-      from,
-      value,
-      gas,
-      gasPrice
-    }, blockNumber)
+    const result = await getResult(transaction)
 
     console.log('RAW result:', result)
     // Trim the 0x prefix

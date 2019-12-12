@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/pertsev/web3_utilz#readme",
   "dependencies": {
-    "web3": "^1.0.0-beta.52"
+    "web3": "^1.2.2"
   }
 }
